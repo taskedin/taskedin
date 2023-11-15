@@ -7,6 +7,18 @@ class TaskedinHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text(title),
+        elevation: 1,
+      ),
+      body: ListView(
+        children: const [
+          Text('data'),
+        ],
+      ),
+    );
   }
 }

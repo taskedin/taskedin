@@ -12,11 +12,14 @@ class TaskedIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TaskedIn',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: Colors.yellow[500],
+        canvasColor: Colors.yellow[300],
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const TaskedinHomePage(title: 'TaskedIn - an ultimate to-do task manager for everyone.'),
+      home: const TaskedinHomePage(title: 'TaskedIn'),
     );
   }
 }
