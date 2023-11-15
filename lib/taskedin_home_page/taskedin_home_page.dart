@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:taskedin/taskedin_home_page/element/todo_tile_element.dart';
 
-class TaskedinHomePage extends StatelessWidget {
+class TaskedinHomePage extends StatefulWidget {
   const TaskedinHomePage({super.key, required this.title});
-  
+
   final String title;
+
+  @override
+  State<TaskedinHomePage> createState() => _TaskedinHomePageState();
+}
+
+class _TaskedinHomePageState extends State<TaskedinHomePage> {
+  
+  List toDoList = [
+    ['Task One', false],
+    ['Task Two', false],
+    ['Task Three', false],
+  ];
+
+  void onChange(bool? value, int index) {
+    setState(() {
+      toDoList[index][1] = !toDoList[index][1];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +30,18 @@ class TaskedinHomePage extends StatelessWidget {
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text(title),
+        title: Text(widget.title),
         elevation: 1,
       ),
-      body: ListView(
-        children: const [
-          Text('data'),
-        ],
+      body: ListView.builder(
+        itemCount: toDoList.length,
+        itemBuilder: (context, index) {
+          return TodoTileElement(
+            taskName: toDoList[index][0],
+            taskCompleted: toDoList[index][1],
+            onChange: (value) => onChange(value, index),
+          );
+        },
       ),
     );
   }
